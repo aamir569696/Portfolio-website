@@ -1,0 +1,528 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  scroll-behavior: smooth;
+}
+main {
+  background-color: #000000;
+}
+
+@font-face {
+  font-family: "Myfont";
+  src: url(/font/2.woff2);
+}
+
+@mixin display-flex() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@mixin button-design() {
+  padding: 1.2rem 2.5rem;
+  margin-top: 4vw;
+  background: linear-gradient(90deg, #a32aff 0%, #ff4f91 50%, #fda52a 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 10px rgba(114, 9, 183, 0.3);
+
+  &:hover {
+    background: linear-gradient(90deg, #ff0099, #7209b7); /* pink to purple */
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 0, 153, 0.6);
+  }
+}
+@mixin background-image() {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@mixin amir() {
+  .potfolio-detail {
+    width: 100%;
+    color: white;
+    line-height: 3rem;
+    a {
+      text-decoration: none;
+    }
+    h3 {
+      color: white;
+      font-size: 1.75rem;
+      font-family: "Myfont";
+      font-weight: 100;
+      transition: color 0.3s ease; /* [9] Hover text glow */
+    }
+  }
+  .portfolio-btn button {
+    @include button-design();
+    position: relative;
+    z-index: 2;
+  }
+  .portfolio1:hover h3 {
+    color: #00ffc3; /* [10] Text glow on hover */
+  }
+}
+@mixin portfolio-card($bg-image) {
+  background-image: url($bg-image);
+  @include background-image();
+  width: 47%;
+  height: 48%;
+  position: relative; /* [3] Overlay ke liye required */
+  overflow: hidden; //..
+  border-radius: 15px; /* [4] Smooth rounded corners */
+  transition: all 0.3s ease;
+  padding: 1vw 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* ✨ [5] Overlay Layer (Professional dark + gradient) */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
+    opacity: 0.5;
+    transition: all 0.4s ease;
+  }
+  /* 🪄 [6] Hover Zoom + Overlay Bright */
+  &:hover {
+    transform: scale(1.03);
+  }
+  &:hover::before {
+    opacity: 0.8;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 255, 200, 0.2) 0%,
+      rgba(0, 0, 0, 0.9) 100%
+    );
+    box-shadow: 0 0 25px rgba(0, 255, 200, 0.3);
+  }
+  /* 🧠 [7] Text & Button Layer – front par visible */
+  .potfolio-detail,
+  .portfolio-btn {
+    position: relative;
+    z-index: 2;
+  }
+}
+//section-one
+.section-one {
+  width: 100%;
+}
+nav {
+  width: 100%;
+  @include display-flex();
+  padding: 1vw 6vw;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+
+  .menu {
+    display: none; // mobile: hide menu
+    flex-direction: column;
+    gap: 15px;
+
+    li {
+      list-style: none;
+      transition: all 0.4s ease;
+
+      a {
+        text-decoration: none;
+        color: white;
+        transition: all 0.4s ease;
+      }
+      a:hover {
+        color: rgb(199, 192, 192);
+      }
+    }
+  }
+
+  .hamburger {
+    display: block; // mobile: show hamburger
+    font-size: 2.5rem;
+    cursor: pointer;
+  }
+
+  @media (min-width: 769px) {
+    .menu {
+      display: flex; // desktop: show menu
+      flex-direction: row;
+    }
+    .hamburger {
+      display: none; // desktop: hide hamburger
+    }
+  }
+}
+.menu.active {
+  width: 100%;
+  display: flex; // (16) show menu
+  position: absolute;
+  top: 45px;
+  left: 0px;
+  background-color: #000000;
+  text-align: center;
+  padding: 20px 0px;
+  transition: all 0.4s linear;
+}
+.parent-one {
+  margin: 0vw 5.5vw;
+
+  .top-one {
+    padding-top: 60px;
+
+    h3 {
+      background: linear-gradient(90deg, #b14cff 0%, #ff4f91 50%, #ffb347 100%);
+      -webkit-background-clip: text;
+      background-clip: text;     
+      -webkit-text-fill-color: transparent;
+      font-weight: 300;
+      font-family: "Myfont";
+      font-size: 2.5rem;
+      line-height: 3rem;
+    }
+  }
+}
+.bottom-two {
+  width: 100%;
+
+  .image {
+    background-image: url("../image/hero-01.jpg");
+    @include background-image();
+    z-index: 90;
+    width: 100%;
+    height: 35vw;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      transform: scale(1.03);
+      background-position: center;
+    }
+    .image-text {
+      width: 100%;
+      padding: 3vw 4vw;
+      color: white;
+      position: relative;
+      span {
+        font-size: 1.2rem;
+      }
+
+      h4 {
+        font-size: 2.5rem;
+        font-family: "Myfont";
+        font-weight: 100;
+        padding: 1vw 0vw;
+      }
+      p {
+        font-size: 1.2rem;
+      }
+    }
+    button {
+      @include button-design();
+    }
+  }
+}
+//section-two-start
+.section-two {
+  margin: 0vw 8vw;
+
+  .top-two {
+    color: white;
+    padding: 5vw 8vw;
+
+    h4 {
+      background: linear-gradient(90deg, #ff00cc 0%, #333399 50%, #00ffff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+background-clip: text;     
+      font-size: 2rem;
+      font-family: "Myfont";
+      font-weight: 100;
+      line-height: 3.3rem;
+      padding-bottom: 4vw;
+    }
+    p {
+      font-size: 1.4em;
+      font-weight: 100;
+      color: rgb(168, 164, 164);
+    }
+  }
+
+  .bottom-two {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 200vh;
+    width: 100%;
+    gap: 20px;
+
+    .portfolio1 {
+      @include portfolio-card("/image/portfolio-02.jpg");
+      @include amir();
+    }
+    .portfolio2 {
+      @include portfolio-card("/image/portfolio-01.jpg");
+      @include amir();
+    }
+    .portfolio3 {
+      @include portfolio-card("/image/portfolio-03.jpg");
+      @include amir();
+    }
+    .portfolio4 {
+      @include portfolio-card("/image/portfolio-04.jpg");
+      @include amir();
+    }
+  }
+}
+
+//section-three-start
+.section-three {
+  margin: 0vw 9vw;
+  padding: 7vw 0vw;
+
+  .top-three {
+    width: 100%;
+    padding: 6vw 3vw;
+    color: white;
+
+    h4 {
+      background: linear-gradient(90deg, #00eaff 0%, #00ffaa 50%, #ffffff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;     
+      -webkit-text-fill-color: transparent;
+      font-size: 2rem;
+      font-weight: 100;
+      font-family: "Myfont";
+      padding: 2vw 0vw;
+    }
+    p {
+      font-size: 1.3rem;
+      font-weight: 100;
+      color: #cab9b9;
+    }
+  }
+
+  .bottom-three {
+    display: flex;
+    justify-content: space-around;
+    .card1 {
+      width: 32%;
+      background: #06221f; /* fallback */
+      background: linear-gradient(
+        135deg,
+        #06221f 0%,
+        #0b6b63 45%,
+        #00c2a8 100%
+      );
+      padding: 5vw 2.5vw;
+      border: 2px solid transparent;
+      border-radius: 12px;
+      transition: all 0.4s ease;
+      &:hover {
+        background: linear-gradient(
+          135deg,
+          #071426 0%,
+          #0f3a4b 40%,
+          #136a8a 100%
+        );
+        box-shadow: 0 0 20px #00ffc3, 0 0 40px #00ffc3 inset;
+        transform: translateY(-5px);
+        transition: all 0.4s ease;
+        border: 2px solid #00ffc3;
+      }
+
+      span {
+        padding: 0.6vw 1.5vw;
+        border: 1px solid black;
+        background-color: white;
+      }
+      a {
+        color: white;
+        text-decoration: none;
+      }
+      h4 {
+        font-size: 1.5rem;
+        font-family: "Myfont";
+        padding: 2vw 0;
+        font-weight: 100;
+      }
+      p {
+        padding: 2vw 0vw;
+        font-size: 1.2rem;
+        color: white;
+      }
+      .secend-a {
+        color: white;
+        text-decoration: none;
+        padding: 2vw 0vw;
+      }
+    }
+  }
+}
+// section-three-end
+// section-four-start
+.section-four {
+  margin: 0vw 9vw;
+  .section-four-part {
+    padding: 5vw 7vw;
+    color: white;
+    text-align: center;
+
+    span {
+      font-size: 1.2rem;
+    }
+    h4 {
+      font-size: 2rem;
+      font-family: "Myfont";
+      font-weight: 100;
+      padding: 1vw 0vw;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+    button {
+      @include button-design();
+      font-size: 1.1rem;
+    }
+  }
+}
+footer {
+  text-align: center;
+  margin: 0vw 9vw;
+  padding: 4vw 0vw;
+  color: white;
+
+  h4 {
+    font-size: 1.7rem;
+    font-family: "Myfont";
+    font-weight: 100;
+    padding-bottom: 1vw;
+  }
+  small {
+    word-spacing: 3px;
+  }
+  .link-div {
+    padding: 3vw 0vw;
+    a {
+      color: white;
+      font-size: 1.7rem;
+
+      &:hover {
+        color: gray;
+      }
+    }
+  }
+}
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, #00c2a8, #007e75);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 255, 200, 0.4);
+  display: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(135deg, #00ffd1, #00a896);
+    box-shadow: 0 0 25px rgba(0, 255, 200, 0.6);
+    transform: translateY(-5px);
+  }
+}
+@media (min-width: 560px) {
+  .parent-one {
+    margin: 0vw 8vw;
+  }
+  .parent-one .top-one h3 {
+    font-size: 3.5rem;
+    padding: 4rem 6vw;
+    line-height: 5rem;
+  }
+}
+@media (max-width: 994px) {
+  .bottom-two .image {
+    height: 50vw;
+  }
+  .parent-one {
+    height: 150vh;
+  }
+  .section-two .top-two h4 {
+    padding: 6vw 0vw;
+  }
+  .section-three .bottom-three {
+    display: block;
+    width: 100%;
+    flex-direction: column;
+  }
+  .section-three .bottom-three .card1 {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+@media (max-width: 560px) {
+  .parent-one {
+    height: 140vh;
+  }
+  .image-text {
+    position: absolute;
+    top: 61vw;
+    left: 0vw;
+  }
+  .section-two .top-two {
+    padding: 30vw 0vw;
+  }
+  .section-two .bottom-two .portfolio1 {
+    width: 100%;
+    height: 60vh;
+    padding: 6vw 2vw;
+  }
+  .section-two .bottom-two .portfolio2 {
+    width: 100%;
+    height: 60vh;
+    padding: 6vw 2vw;
+  }
+  .section-two .bottom-two .portfolio3 {
+    width: 100%;
+    height: 60vh;
+    padding: 6vw 2vw;
+  }
+  .section-two .bottom-two .portfolio4 {
+    width: 100%;
+    height: 60vh;
+    padding: 6vw 2vw;
+  }
+  .section-two {
+    height: 410vh;
+  }
+  .section-three .bottom-three {
+    display: block;
+    width: 100%;
+    flex-direction: column;
+  }
+  .section-three .bottom-three .card1 {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
