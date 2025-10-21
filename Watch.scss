@@ -18,7 +18,7 @@ main {
 
 @font-face {
   font-family: "Myfont";
-  src: url(/font/2.woff2);
+  src: url(/2.woff2);
 }
 
 @mixin display-flex() {
@@ -203,7 +203,7 @@ nav {
   width: 100%;
 
   .image {
-    background-image: url("../image/hero-01.jpg");
+    background-image: url("/hero-01.jpg");
     @include background-image();
     z-index: 90;
     width: 100%;
@@ -273,19 +273,19 @@ background-clip: text;
     gap: 20px;
 
     .portfolio1 {
-      @include portfolio-card("/image/portfolio-02.jpg");
+      @include portfolio-card("/portfolio-02.jpg");
       @include amir();
     }
     .portfolio2 {
-      @include portfolio-card("/image/portfolio-01.jpg");
+      @include portfolio-card("/portfolio-01.jpg");
       @include amir();
     }
     .portfolio3 {
-      @include portfolio-card("/image/portfolio-03.jpg");
+      @include portfolio-card("/portfolio-03.jpg");
       @include amir();
     }
     .portfolio4 {
-      @include portfolio-card("/image/portfolio-04.jpg");
+      @include portfolio-card("/portfolio-04.jpg");
       @include amir();
     }
   }

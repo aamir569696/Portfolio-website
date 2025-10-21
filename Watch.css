@@ -19,7 +19,7 @@ main {
 
 @font-face {
   font-family: "Myfont";
-  src: url(/font/2.woff2);
+  src: url(/2.woff2);
 }
 .section-one {
   width: 100%;
@@ -104,7 +104,7 @@ nav .hamburger {
   width: 100%;
 }
 .bottom-two .image {
-  background-image: url("../image/hero-01.jpg");
+  background-image: url("/hero-01.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -184,7 +184,7 @@ nav .hamburger {
   gap: 20px;
 }
 .section-two .bottom-two .portfolio1 {
-  background-image: url("/image/portfolio-02.jpg");
+  background-image: url("/portfolio-02.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -260,7 +260,7 @@ nav .hamburger {
   color: #00ffc3; /* [10] Text glow on hover */
 }
 .section-two .bottom-two .portfolio2 {
-  background-image: url("/image/portfolio-01.jpg");
+  background-image: url("/portfolio-01.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -336,7 +336,7 @@ nav .hamburger {
   color: #00ffc3; /* [10] Text glow on hover */
 }
 .section-two .bottom-two .portfolio3 {
-  background-image: url("/image/portfolio-03.jpg");
+  background-image: url("/portfolio-03.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -412,7 +412,7 @@ nav .hamburger {
   color: #00ffc3; /* [10] Text glow on hover */
 }
 .section-two .bottom-two .portfolio4 {
-  background-image: url("/image/portfolio-04.jpg");
+  background-image: url("/portfolio-04.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
