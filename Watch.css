@@ -676,7 +676,7 @@ footer .link-div a:hover {
 }
 @media (max-width: 560px) {
   .parent-one {
-    height: 140vh;
+    padding-bottom: 134vh;
   }
   .image-text {
     position: absolute;
@@ -707,7 +707,7 @@ footer .link-div a:hover {
     padding: 6vw 2vw;
   }
   .section-two {
-    height: 410vh;
+    height: 370vh;
   }
   .section-three .bottom-three {
     display: block;
